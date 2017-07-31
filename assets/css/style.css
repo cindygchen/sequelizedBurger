@@ -1,0 +1,41 @@
+body {
+    background-color: #047cc0
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+li {
+	font-size: 1em;
+}
+
+p, h1, h2 {
+	text-align: center;
+}
+
+form {
+	display: inline;
+}
+
+
+
+.eat-button {
+	 margin-top: 10px;
+	 margin-bottom: 10px;
+	 margin-left: 20px;
+}
+
+#form-area {
+	clear: both;
+	/*margin-top: 20px;*/
+}
+
+#burger-name, #burger-submit {
+	display: block;
+	margin: 10px auto 10px auto;
+	padding: 5px;
+	width: 300px;
+}
