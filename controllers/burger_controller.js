@@ -1,30 +1,43 @@
+// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
+
+// Dependencies
+// =============================================================
 var express = require("express");
 
-// Import the model (cat.js) to use its database functions.
-var burger = require("../models/burger.js");
-
+// Import the model to use its database functions.
+var db = require("../models");
 var router = express.Router();
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-	burger.selectAll(function(data) {
-		res.render("index", {burgers: data});
+	db.Burgers.findAll({}).then(function(arg) {
+		res.render("index", {burgers: arg});
 	});
 });
 
 router.post("/", function(req, res) {
-	console.log("req.body.name: " + req.body.name);
-	burger.insertOne("burger_name", [req.body.name], function() {
+	db.Burgers.create({
+		burger_name: req.body.name,
+		devoured:req.body.devoured
+	}).then(function(arg){
 		res.redirect("/");
 	});
 });
 
 router.put("/:id", function(req, res) {
-	var condition = "id = " + req.params.id;
-;	console.log("condition: " + condition);
-	burger.updateOne({devoured: req.body.devoured}, condition, function() {
+	db.Burgers.update(
+		{
+			devoured: true
+		}, 
+		{ where: {
+			id: req.params.id
+		}
+	}).then(function(arg){
 		res.redirect("/");
 	});
-})
+});
+
 
 module.exports = router;

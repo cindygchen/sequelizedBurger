@@ -1,4 +1,4 @@
-<div >
+<div id="eatMe" >
     <h1>These burgers are ready to be eaten...</h1>
 	<ul>
 		{{#each burgers}}
@@ -15,8 +15,8 @@
 	</ul>
 </div>
 
-<div>
-    <h2>Devoured</h2>
+<div id="devoured" >
+    <h1>Devoured</h1>
 	<ul>
 		{{#each burgers}}
     		{{#if this.devoured}}
